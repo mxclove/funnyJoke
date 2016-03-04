@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="GeneralJoke" representedClassName="GeneralJoke" syncable="YES">
+        <attribute name="create_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gifid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jokeImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jokeType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jokeViedo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="love" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webUIEnable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="weixin_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GeneralJoke" positionX="-63" positionY="-18" width="128" height="270"/>
+    </elements>
+</model>
