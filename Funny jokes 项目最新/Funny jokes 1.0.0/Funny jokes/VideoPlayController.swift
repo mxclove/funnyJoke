@@ -50,8 +50,8 @@ class VideoPlayController: UIViewController ,UIGestureRecognizerDelegate {
         view.addSubview(videoPlayer.view)
         videoPlayer.view.addSubview(activitydicator)
 
-        let leftSwip = UISwipeGestureRecognizer(target: self, action: "leftSwip")
-        let rightSwip = UISwipeGestureRecognizer(target: self, action: "rightSwip")
+        let leftSwip = UISwipeGestureRecognizer(target: self, action: "leftSwip:")
+        let rightSwip = UISwipeGestureRecognizer(target: self, action: "rightSwip:")
         
         leftSwip.direction = UISwipeGestureRecognizerDirection.Left
         rightSwip.direction = UISwipeGestureRecognizerDirection.Right
@@ -97,16 +97,19 @@ class VideoPlayController: UIViewController ,UIGestureRecognizerDelegate {
 
     
     
-    func leftSwip() {
+    func leftSwip(recongnizer: UIPanGestureRecognizer) {
 
-        videoPlayer.view.removeFromSuperview()
-        beginSeekingForward()
+        if recongnizer.state == UIGestureRecognizerState.Ended {
+            videoPlayer.view.removeFromSuperview()
+            beginSeekingForward()
+        }
     }
 
-    func rightSwip() {
-
-        videoPlayer.view.removeFromSuperview()
-        beginSeekingBackward()
+    func rightSwip(recongnizer: UIPanGestureRecognizer) {
+        if recongnizer.state == UIGestureRecognizerState.Ended {
+            videoPlayer.view.removeFromSuperview()
+            beginSeekingBackward()
+        }
     }
     
     func beginSeekingForward() {

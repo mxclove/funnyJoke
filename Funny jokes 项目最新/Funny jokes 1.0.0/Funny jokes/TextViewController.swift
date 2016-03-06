@@ -40,7 +40,7 @@ class TextViewController: UIViewController, MoreTableViewControllerDelegate, UIG
         tableView.registerNib(nibtextJokeCell, forCellReuseIdentifier: "textJokeCell")
         
 //     手势划
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft")
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft:")
         swipeRecognizer.delegate = self
         swipeRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         tableView.addGestureRecognizer(swipeRecognizer)
@@ -68,13 +68,15 @@ class TextViewController: UIViewController, MoreTableViewControllerDelegate, UIG
         tableView.footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footReFresh")
         
         getDataFromInternet(29, page: 1)
-
     }
     
-    func swipeLeft() {
-        let VCs = self.tabBarController?.viewControllers
-        let vc = VCs![1]
-        self.tabBarController?.selectedViewController = vc
+    func swipeLeft(recongnizer: UIPanGestureRecognizer) {
+        if recongnizer.state == UIGestureRecognizerState.Ended {
+            let VCs = self.tabBarController?.viewControllers
+            let vc = VCs![1]
+            self.tabBarController?.selectedViewController = vc
+        }
+        
   
     }
     override func viewWillAppear(animated: Bool) {
@@ -123,9 +125,9 @@ class TextViewController: UIViewController, MoreTableViewControllerDelegate, UIG
     
     override func viewWillLayoutSubviews() {
         
-        let aaa = deviceWidth
+        let temp = deviceWidth
         deviceWidth = self.view.bounds.width
-        if deviceWidth != aaa {
+        if deviceWidth != temp {
             tableView.reloadData()
         }
         
@@ -198,10 +200,7 @@ class TextViewController: UIViewController, MoreTableViewControllerDelegate, UIG
     @IBAction func refreshBTnChecked(sender: UIBarButtonItem) {
         tableView.header.beginRefreshing()
     }
-    
-    
-    
-    
+
     func getDataFromInternet(type: Int, page: Int) {
         
         

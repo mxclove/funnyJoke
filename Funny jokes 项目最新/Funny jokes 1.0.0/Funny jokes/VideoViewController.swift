@@ -67,11 +67,11 @@ class VideoViewController: UIViewController , MoreTableViewControllerDelegate, U
 //        }
         
         
-        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft")
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft:")
         swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         swipeLeftRecognizer.delegate = self
         
-        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeRight")
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeRight:")
         swipeRightRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         swipeRightRecognizer.delegate = self
         
@@ -196,18 +196,21 @@ class VideoViewController: UIViewController , MoreTableViewControllerDelegate, U
     @IBAction func reFreshBTnChecked(sender: UIBarButtonItem) {
         tableView.header.beginRefreshing()
     }
-    
-    func swipeLeft() {
-        
-        let vcs = tabBarController?.viewControllers
-        let moreVC = vcs![3]
-        tabBarController?.selectedViewController = moreVC
+
+    func swipeLeft(recongnizer: UIPanGestureRecognizer) {
+        if recongnizer.state == UIGestureRecognizerState.Ended {
+            let vcs = tabBarController?.viewControllers
+            let moreVC = vcs![3]
+            tabBarController?.selectedViewController = moreVC
+        }
     }
     
-    func swipeRight() {
-        let vcs = tabBarController?.viewControllers
-        let pictureVC = vcs![1]
-        tabBarController?.selectedViewController = pictureVC
+    func swipeRight(recongnizer: UIPanGestureRecognizer) {
+        if recongnizer.state == UIGestureRecognizerState.Ended {
+            let vcs = tabBarController?.viewControllers
+            let pictureVC = vcs![1]
+            tabBarController?.selectedViewController = pictureVC
+        }
     }
     
     override func viewDidAppear(animated: Bool) {

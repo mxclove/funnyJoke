@@ -54,11 +54,11 @@ class PictureViewController: UIViewController , MoreTableViewControllerDelegate,
             return r1.create_time!.localizedStandardCompare(r2.create_time!) == NSComparisonResult.OrderedDescending
         })
         
-        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft")
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft:")
         swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         swipeLeftRecognizer.delegate = self
         
-        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeRight")
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeRight:")
         swipeRightRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         swipeRightRecognizer.delegate = self
         
@@ -123,16 +123,23 @@ class PictureViewController: UIViewController , MoreTableViewControllerDelegate,
         }
     }
 
-    func swipeLeft() {
-        let vcs = tabBarController?.viewControllers
-        let videoVC = vcs![2]
-        tabBarController?.selectedViewController = videoVC
+    func swipeLeft(recongnizer: UIPanGestureRecognizer) {
+        
+        if recongnizer.state == UIGestureRecognizerState.Ended {
+            let vcs = tabBarController?.viewControllers
+            let videoVC = vcs![2]
+            tabBarController?.selectedViewController = videoVC
+        }
+        
     }
     
-    func swipeRight() {
-        let vcs = tabBarController?.viewControllers
-        let textVC = vcs![0]
-        tabBarController?.selectedViewController = textVC
+    func swipeRight(recongnizer: UIPanGestureRecognizer) {
+        if recongnizer.state == UIGestureRecognizerState.Ended {
+            let vcs = tabBarController?.viewControllers
+            let textVC = vcs![0]
+            tabBarController?.selectedViewController = textVC
+        }
+        
     }
     
     func removeAllAndReLoadData(controller: MoreTableViewController) {
